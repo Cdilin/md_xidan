@@ -1,0 +1,15 @@
+@import '../../miniprogram_npm/vant-weapp/common/index.wxss';
+
+
+
+  
+  .orderinfo_group{
+    
+
+    
+    height:auto;
+    width: 100%;
+    background-color:#fff;
+   
+    }
+    

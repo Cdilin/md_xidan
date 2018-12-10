@@ -1,0 +1,47 @@
+.page-body {
+  padding: 0rpx 0;
+}
+/* display: flex; flex-direction: column; align-items: center;  width: 100%; */
+.page-body-wrapper {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  width: 100%;
+}
+
+.galsscanvas-body{
+  position: relative;
+  z-index: 0;
+  background: #0f0
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 40px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index:2;
+  /* background: #f00; */
+  
+}
+.zoom-butotn{
+  width: 36px;
+  height: 36px;
+  margin: 2px;
+  font-size: 14px;
+}
+.yd-butotn{
+  width: 36px;
+  height: 36px;
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-img{
+  width:24px;height:24px;padding: 6px;
+}

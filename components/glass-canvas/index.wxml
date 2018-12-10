@@ -1,0 +1,33 @@
+<c-canvas>
+<view class="page-body">
+  <!-- <view class="page-body-wrapper"> -->
+<view classs='galsscanvas-body' style="{{'width: 100%; height:' +  height + 'px' }}">
+  <!-- {{'width:' + outCanvasWidth + 'px;height:' + outCanvasHeight + 'px;background-color:#f00;position: fixed;top: -10px'}} -->
+  <canvas canvas-id="canvas" style ="{{'z-index:1;margin-left:auto; margin-right:auto; width:' + width + 'px;height:' + height + 'px;background-color:' + backgroundColor}}" bindtouchmove='onCanvasMove' bindtouchend='onCanvasMoveEnd' bindtouchcancel='onCanvasMoveEnd' bindtouchstart='onCanvasMoveStart'  disable-scroll='false'>
+  </canvas>
+ 
+ <block wx:if="{{ !showInList }}">
+  <view class='button-wrapper'  >
+  <cover-view><button class='yd-butotn' type='default'   bindtap='onRefresh' hover-class='none'>
+    <cover-image src='./回到原点201.png' class='button-img'  ></cover-image>
+  </button>
+  </cover-view>
+  <cover-view><button class='yd-butotn' type='default' bindtap='zoomUp' hover-class='none' >
+    <cover-image src='./放大.png' class='button-img'  ></cover-image>
+  </button></cover-view>
+  <cover-view><button class='yd-butotn' type='default' bindtap='zoomDown' hover-class='none'>
+    <cover-image src='./缩小.png' class='button-img'  ></cover-image>
+  </button></cover-view>
+  <cover-view><button class='yd-butotn' type='default' bindtap='saveImg' hover-class='none'>
+    <cover-image src='./保存到相册.png' class='button-img'  ></cover-image>
+  </button></cover-view>
+  </view>
+  </block>
+
+   <canvas canvas-id="canvas2" style ="{{'width:' + outCanvasWidth + 'px;height:' + outCanvasHeight + 'px;background-color:#f00;position: fixed;top: 10000px'}}" ></canvas>
+  
+  </view>
+</view>
+
+<van-toast id="van-toast" />
+</c-canvas>

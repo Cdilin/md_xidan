@@ -1,0 +1,13 @@
+<template name="carTemp">
+
+  <view class="adapter_item">
+
+    <image src="http://kks.me/HkrL" class="item_img"></image>    
+    <view class="item_content">
+        <text class="item_id">{{id}}</text>
+        <text class="item_title">{{name}}</text>
+    </view>
+
+  </view>
+
+</template>

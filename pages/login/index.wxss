@@ -1,0 +1,23 @@
+  .login_name {
+    font-size: 0.14rem;
+    color: #888;
+    text-align: left;
+    margin-left: 0.15rem;
+  }
+
+    .login_button{
+    position: relative ;
+    margin-top: 10px;
+    width: 90%;
+    
+    /* transform: translateX(-50%); */
+  }
+
+  .bgf{
+    background: #fff !important;
+    border: none !important;
+  }
+
+    .mt{
+    margin-top: 0.2rem;
+  }

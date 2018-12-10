@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/login/index",
+    "pages/register/index",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/orderlist/index",
+    "pages/shopcar/index",
+    "pages/orderdetail/index",
+    "pages/glassdetail/index"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "下单",
+    "navigationBarTextStyle":"black"
+  }
+  ,
+  "tabBar": {
+      "color": "#1e1e1e",
+      "selectedColor": "#1e1e1e",
+      "borderStyle": "black",
+      "list": [
+      {
+            "selectedIconPath": "imgs/编辑1.png",
+            "iconPath": "imgs/编辑0.png",
+            "pagePath": "pages/index/index",
+            "text": "下单"  
+      },
+      {
+            "selectedIconPath": "imgs/购物车1.png",
+            "iconPath": "imgs/购物车00.png",
+            "pagePath": "pages/shopcar/index",
+            "text": "购物车"  
+      },
+      {
+            "selectedIconPath": "imgs/订单1.png",
+            "iconPath": "imgs/订单0.png",
+            "pagePath": "pages/orderlist/index",
+            "text": "订单"  
+      }
+    ]  
+  }
+
+}

@@ -1,0 +1,20 @@
+<view >
+  
+    <van-cell-group>
+      <van-field value="{{ filed_phone }}" label="手机号" required type="tel" placeholder="请输入手机号" 
+        bind:change="phone_change"
+      />
+      <van-field value="{{ filed_password }}" type="password" required label="密码" placeholder="请输入密码"  bind:change="password_change"/>
+      <van-field value="{{ filed_password2 }}" type="password" required label="确认密码" placeholder="请输入密码"  bind:change="password_change2" error-message="{{ password2_error_message }}"/>
+
+   <view>
+    <button type="primary" loading="{{ isLoading }}" bindtap='doregister' class="login_button">注册</button>
+    
+   </view> 
+
+    </van-cell-group>
+    
+</view>
+
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

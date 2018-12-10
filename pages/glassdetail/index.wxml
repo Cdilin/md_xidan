@@ -1,0 +1,50 @@
+<glass-canvas id="glass_canvas" width="340" height="400" backgroundColor="#fff" galss="{{glass}}" rects="{{rects}}" cirss="{{cirs}}"/>
+
+
+<scroll-view scroll-y style="height: 180px;">
+<block wx:for='{{rects}}' wx:key='{{rects}}' wx:for-index='index'>
+<!-- bindtap='editRect' data-item='{{item}} -->
+<view class="listItem" hover-class='listItem-hover'  bindtap='editRect' data-itemindex='{{index}}' data-item='{{item}}'>
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>{{ item.bottom == ''?'上:':'下:' }}</text>
+        <text class='listItemText' >{{ item.bottom == ''? item.top : item.bottom }}</text>
+  </view>
+
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>{{ item.right==''?'左:':'右:' }}</text>
+        <text class='listItemText' >{{ item.right==''? item.left : item.right }}</text>
+  </view>
+
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>长:</text>
+        <text class='listItemText' >{{ item.width }}</text>
+  </view>
+
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>宽:</text>
+        <text class='listItemText' >{{ item.height }}</text>
+  </view>
+
+  </view>
+</block>
+
+<block wx:for='{{cirs}}' wx:key='{{cirs}}' wx:for-index='index' >
+<view class="listItem"  hover-class='listItem-hover' bindtap='editCir' data-itemindex="{{index}}" data-item='{{item}}'>
+ <view class="cirValueItem">
+      <text class='listItemTitle'>{{ item.bottom==''?'上:':'下:' }}</text>
+      <text class='listItemText'>{{ item.bottom==''? item.top : item.bottom}}</text>
+    </view>
+
+   <view class="cirValueItem" >
+      <text class='listItemTitle'>{{ item.right==''?'左:':'右:' }}</text>
+      <text class='listItemText'>{{ item.right==''?item.left:item.right }}</text>
+    </view>
+    
+    <view class="cirValueItem">
+      <text class='listItemTitle'>径:</text>
+      <text class='listItemText'>{{ item.dia }}</text>
+    </view>
+</view>
+
+</block>
+</scroll-view>

@@ -1,0 +1,23 @@
+{
+  "usingComponents": {
+    "submit-bar": "../../components/submit-bar/index",
+    "order-info": "../../components/order-info/index",
+    "glass-canvas":"../../components/glass-canvas/index",
+
+    "van-badge": "../../miniprogram_npm/vant-weapp/badge/index",
+    "van-badge-group": "../../miniprogram_npm/vant-weapp/badge-group/index",
+    "van-row": "../../miniprogram_npm/vant-weapp/row/index",
+    "van-col": "../../miniprogram_npm/vant-weapp/col/index",
+    "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "../../miniprogram_npm/vant-weapp/cell-group/index",
+    "van-field": "../../miniprogram_npm/vant-weapp/field/index",
+    "van-action-sheet": "../../miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-button": "../../miniprogram_npm/vant-weapp/button/index",
+    "van-toast": "../../miniprogram_npm/vant-weapp/toast/index",
+    "my-field": "../../components/my-field/index"
+
+  }
+  ,
+  "navigationBarTitleText": "下单"
+}

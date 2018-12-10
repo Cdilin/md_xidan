@@ -1,0 +1,10 @@
+<view >
+
+  
+    <van-cell-group class="orderinfo_group">
+      <van-cell title="产品" is-link />
+      </van-cell-group>
+
+
+
+</view>

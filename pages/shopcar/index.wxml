@@ -1,0 +1,108 @@
+<view class="main">
+    <view wx:if="{{hasList}}">
+        <view class="cart-box">
+            <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
+                <icon wx:if="{{item.selected}}" type="success" color="#44BB00" data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
+                <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>
+                <!-- <navigator url="../details/details?id={{item.id}}"> -->
+                <!-- <glass-canvas id="glass_canvas" width="185" height="185" backgroundColor="#fff" 
+                galss="{{'width':item.productLength,'height':item.productWidth}}" 
+                rects="{{item.productGaps}}" cirss="{{item.productHoles}}"/> -->
+                <!-- <image class="cart-thumb" src="{{item.image}}"></image> -->
+                <!-- </navigator> -->
+                <text class="cart-pro-name">{{item.productName}}</text>
+                <!-- <text class="cart-pro-price">￥{{item.price}}</text> -->
+                <view class="cart-count-box">
+                <text >数量：{{item.productQty}}</text>
+                
+                    <!-- <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}">-</text> -->
+                    <!-- <text class="cart-count-num">{{item.num}}</text> -->
+                    <!-- <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text> -->
+                </view>
+                <text class="cart-del" bindtap="deleteList" data-index="{{index}}">×</text>
+            </view>
+        </view>
+
+        <view class="cart-footer">
+            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll"/>
+            <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll"/>
+            <view class="order-icon">
+            
+                <navigator url="../orders/orders">
+                
+                <!-- <image src="/image/icon3.png"></image> -->
+                </navigator>
+            </view>
+            <text>全选</text>
+            <!-- <text class="cart-toatl-price">￥{{totalPrice}}</text> -->
+            <text class="cart-toatl-price" bindtap='showAddressEditSheet'>提交</text>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="cart-no-data">购物车是空的哦~</view>
+    </view>
+</view>
+
+<!-- 地址输入弹窗 -->
+<van-action-sheet show="{{ addressEditSheet }}" bind:close="onAddressEditSheetClose" title="请输入客户信息">
+  <van-row>
+    <van-col span="24" >
+      <van-field
+        value="{{ custName }}"
+        label="客户名称"
+        placeholder=""
+        border="{{ false }}"
+        type=""
+        bind:change="onOrderNameChange"
+    />
+    </van-col>
+    <van-col span="24" >
+      <van-field
+        value="{{ custPhone }}"
+        label="联系电话"
+        placeholder=""
+        border="{{ false }}"
+        type="number"
+        bind:change="onOrderPhoneChange"
+    />
+    </van-col>
+    
+    <van-col span="24" >
+
+    </van-col>
+    
+    <van-col span="24" >
+      <van-field
+        value="{{ custAddr }}"
+        label="详细地址"
+        placeholder=""
+        border="{{ false }}"
+        type=""
+        bind:change="onOrderAddressChange"
+    />
+  </van-col>
+  <!-- <block wx:for='{{ganghuaarray}}' wx:key='{{ganghuaarray}}'>
+  <van-col span="12" >
+   <button class='param_kongque_nor' type="{{ ganghuaparamTemp.name==item.name?'primary':'default' }}" data-buttonvalue='{{item}}' bindtap='ganghuasel'>{{item.name}}</button>
+  </van-col>
+  </block> -->
+  </van-row>
+
+  <!-- <van-row>
+  </van-row> -->
+
+<van-row>
+
+  <van-col span="24">
+  <button  class='param_okbutton' type="default" bindtap='toSavedOrder'>确定</button>
+  </van-col>
+  
+  
+
+</van-row>
+
+  
+
+</van-action-sheet>
+
+<van-toast id="van-toast" />

@@ -1,0 +1,13 @@
+{
+  "usingComponents":{
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "../../miniprogram_npm/vant-weapp/cell-group/index",
+    "van-field": "../../miniprogram_npm/vant-weapp/field/index",
+    
+    "van-button": "../../miniprogram_npm/vant-weapp/button/index",
+    "van-toast": "../../miniprogram_npm/vant-weapp/toast/index",
+    "my-field": "../../components/my-field/index"
+    }
+  ,
+  "navigationBarTitleText": "登录"
+}

@@ -1,0 +1,29 @@
+<view class="main">
+    <view wx:if="{{hasList}}">
+        <view class="cart-box">
+            <view class="cart-list" wx:for="{{ orderlist }}" wx:key="{{index}}" data-item='{{ item }}' bindtap='onOrderClick'>
+             
+                <text class="order_value" style='font-size: 0.8rem;'>订单ID：{{item.id}}</text>
+                <!-- <text class="cart-pro-price">￥{{item.price}}</text> -->
+                <text class="order_value" style='top:4rpx;'>客户：{{item.custName}}</text>
+                <text class="order_value" style='top:6rpx;'>联系电话：{{item.custPhone}}</text>
+                <text class="order_value" style='top:6rpx;'>客户地址：{{item.custAddr}}</text> 
+
+                <text class="order_value_inline" style='top:6rpx;'>总数量：{{item.ttlQty}}</text>
+                <text class="order_value_inline" style='top:6rpx; padding:0 0 0 70rpx;'>总面积：{{item.ttlArea}}</text>
+
+  
+                <!-- <text class="cart-pro-name">{{item.orderDate}}</text> -->
+                <!-- <text class="cart-del" bindtap="deleteList" data-index="{{index}}">×</text> -->
+            </view>
+        </view>
+
+        
+    </view>
+    <view wx:else>
+        <view class="cart-no-data">订单是空的哦~</view>
+    </view>
+</view>
+
+
+<van-toast id="van-toast" />

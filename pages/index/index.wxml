@@ -1,0 +1,278 @@
+<!--index.wxml-->
+<glass-canvas id="glass_canvas" width="340" height="200" backgroundColor="#fff" galss="{{glass}}" rects="{{rects}}" cirss="{{cirs}}"/>
+
+<!-- <order-info /> -->
+
+<van-cell-group>
+<van-row>
+  <van-col span="8" >
+    <van-field
+    value="{{ glass.width==0?'':glass.width }}"
+    label="长"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onWidthChange"
+    title-width="36px"
+  />
+  </van-col>
+  <van-col span="8">
+  <van-field
+    value="{{ glass.height==0?'':glass.height }}"
+    label="宽"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onHeightChange"
+    title-width="36px"
+  />
+  </van-col>
+  <van-col span="8">
+  <view class="deeps_edit" bindtap="showDeepSheet">
+    <text style='font-size: 14px; width:40px; align-content: left; text-align: left;'>厚度</text>
+    <text style='font-size: 14px; text-align: center;' >{{selectDeep.name}}</text>
+  </view>
+  </van-col>
+</van-row>
+
+<van-row>
+<van-col span="8">
+    <button class="kongque_button" bindtap='showCirEditSheet'>孔</button>
+  </van-col>
+  <van-col span="8">
+   <button class="kongque_button" bindtap='showRectEditSheet'>缺</button>
+  </van-col>
+
+  <van-col span="8">
+   <button class="kongque_button" bindtap='showParamSheet'>参数</button>
+  </van-col>
+</van-row>
+
+</van-cell-group>
+
+<scroll-view scroll-y style="height: 200px;">
+<block wx:for='{{rects}}' wx:key='{{rects}}' wx:for-index='index'>
+<!-- bindtap='editRect' data-item='{{item}} -->
+<view class="listItem" hover-class='listItem-hover'  bindtap='editRect' data-itemindex='{{index}}' data-item='{{item}}'>
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>{{ item.bottom == ''?'上:':'下:' }}</text>
+        <text class='listItemText' >{{ item.bottom == ''? item.top : item.bottom }}</text>
+  </view>
+
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>{{ item.right==''?'左:':'右:' }}</text>
+        <text class='listItemText' >{{ item.right==''? item.left : item.right }}</text>
+  </view>
+
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>长:</text>
+        <text class='listItemText' >{{ item.width }}</text>
+  </view>
+
+  <view class="rectValueItem"  >
+        <text class='listItemTitle'>宽:</text>
+        <text class='listItemText' >{{ item.height }}</text>
+  </view>
+
+  </view>
+</block>
+
+<block wx:for='{{cirs}}' wx:key='{{cirs}}' wx:for-index='index' >
+<view class="listItem"  hover-class='listItem-hover' bindtap='editCir' data-itemindex="{{index}}" data-item='{{item}}'>
+ <view class="cirValueItem">
+      <text class='listItemTitle'>{{ item.bottom==''?'上:':'下:' }}</text>
+      <text class='listItemText'>{{ item.bottom==''? item.top : item.bottom}}</text>
+    </view>
+
+   <view class="cirValueItem" >
+      <text class='listItemTitle'>{{ item.right==''?'左:':'右:' }}</text>
+      <text class='listItemText'>{{ item.right==''?item.left:item.right }}</text>
+    </view>
+    
+    <view class="cirValueItem">
+      <text class='listItemTitle'>径:</text>
+      <text class='listItemText'>{{ item.dia }}</text>
+    </view>
+</view>
+
+</block>
+</scroll-view>
+
+
+
+
+  <!-- price="{{ 3050 }}" -->
+
+
+<submit-bar
+  submitButtonText="完成"
+  nextButtonText="下一个"
+  bind:submit="toSubmitPage"
+  bind:next="onNext"
+  label="{{selectDeep.name + yanseparam.name + ganghuaparam.name }}"
+  
+/>
+
+<!-- 厚度选择弹窗 -->
+<van-action-sheet
+  show="{{ showDeepSheetState }}"
+  actions="{{ deeps }}"
+  bind:close="onDeepSheetClose"
+  bind:select="onDeepsSelect"
+/>
+<!-- 开缺弹窗 -->
+<van-action-sheet show="{{ showRectEditSheetState }}" bind:close="onRectEditSheetClose" title="请输入缺的详细信息">
+  <view><van-row>
+  <van-col span="12" >
+    <my-field
+    values="{{ [ editingRect.top,editingRect.bottom ] }}"
+    labels="{{['上边距','下边距']}}"
+    labelIndex="{{ editingRect.bottom==''? 0 : 1 }}"
+    title-width="60px"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onRectTopChange"
+  />
+  </van-col>
+  <van-col span="12">
+  <my-field
+    values="{{ [editingRect.left,editingRect.right] }}"
+    labels="{{['左边距','右边距']}}"
+    labelIndex="{{ editingRect.right==''?0:1 }}"
+    title-width="60px"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onRectLeftChange"
+  />
+  </van-col>
+  <van-col span="12" >
+    <van-field
+    value="{{ editingRect.width }}"
+    label="缺长"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onRectWidthChange"
+  />
+  </van-col>
+  <van-col span="12">
+  <van-field
+    value="{{ editingRect.height }}"
+    label="缺宽"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onRectHeightChange"
+  />
+  </van-col>
+  <van-col wx:if="{{editingRect.index == undefined || editingRect.index == -1}}" span="24">
+    <button class="addkongque_button" bindtap='onRectEditFinish'>确定</button>
+  </van-col>
+  <block wx:else>
+  <van-col span="12">
+    <button type="warn" class="removekongque_button" bindtap='removeRect'>删除</button>
+  </van-col>
+  <van-col span="12">
+  <button  class="addkongque_button" bindtap='onRectEditFinish'>确定</button>
+  </van-col>
+  </block>
+</van-row></view>
+</van-action-sheet>
+
+<!-- 开孔弹窗 -->
+<van-action-sheet show="{{ showCirEditSheetState }}" bind:close="onCirEditSheetClose" title="请输入孔的详细信息">
+  <view><van-row>
+  <van-col span="12" >
+    <my-field
+    labelIndex="{{ editingCir.bottom == ''?0:1   }}"
+    labels="{{ ['上边距','下边距'] }}"
+    values="{{ [editingCir.top , editingCir.bottom] }}"
+    title-width="60px"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onCirTopChange"
+  />
+  </van-col>
+  <van-col span="12">
+  <my-field
+    value="{{ editingCir.left }}"
+    values="{{ [editingCir.left,editingCir.right ]}}"
+    title-width="60px"
+    labels="{{['左边距','右边距']}}"
+    labelIndex="{{ editingCir.right == '' ? 0:1 }}"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onCirLeftChange"
+  />
+  </van-col>
+  <van-col span="24" >
+    <van-field
+    value="{{ editingCir.dia }}"
+    label="直径"
+    placeholder="单位mm"
+    border="{{ false }}"
+    type="number"
+    bind:change="onCirRadiusChange"
+  />
+  </van-col>
+
+  <!-- <van-col span="12" >
+  <view/>
+  </van-col> -->
+  
+  <van-col wx:if="{{editingCir.index == undefined || editingCir.index == -1 }}" span="24">
+    <button class="addkongque_button" bindtap='onCirEditFinish'>确定</button>
+  </van-col>
+  <block wx:else>
+  <van-col span="12">
+    <button type="warn" class="removekongque_button" bindtap='removeCir'>删除</button>
+  </van-col>
+  <van-col span="12">
+  <button  class="addkongque_button" bindtap='onCirEditFinish'>确定</button>
+  </van-col>
+  </block>
+</van-row></view>
+</van-action-sheet>
+
+<!-- 参数选择弹窗 -->
+<van-action-sheet show="{{ showParamSheetState }}" bind:close="onParamSheetClose" title="请选择其他参数">
+  <van-row>
+  <block wx:for='{{ganghuaarray}}' wx:key='{{ganghuaarray}}'>
+  <van-col span="12" >
+   <button class='param_kongque_nor' type="{{ ganghuaparamTemp.name==item.name?'primary':'default' }}" data-buttonvalue='{{item}}' bindtap='ganghuasel'>{{item.name}}</button>
+  </van-col>
+  </block>
+  </van-row>
+
+  <van-row>
+  <block wx:for='{{yansearray}}' wx:key='{{yansearray}}'>
+    <van-col span="6">
+  <button class='param_kongque_nor' type="{{ yanseparamTemp.name==item.name?'primary':'default' }}" data-buttonvalue='{{item}}' bindtap='yansesel'>{{item.name}}</button>
+  </van-col>
+  
+  </block>
+
+</van-row>
+
+<van-row>
+
+  <van-col span="24">
+  <button  class='param_okbutton' type="default" bindtap='paramsel_ok'>确定</button>
+  </van-col>
+  
+  
+
+</van-row>
+
+  
+
+</van-action-sheet>
+
+<van-toast id="van-toast" />
+
+
+

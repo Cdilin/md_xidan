@@ -1,0 +1,48 @@
+.listItem{
+ display: flex;
+ flex-direction: row; 
+ border-style:  none none solid none ;
+  border-width: 1px;
+  border-color: #E5E5E5;
+  padding-left:6px;
+  padding-right:6px;
+  padding-top:4px;
+  padding-bottom:4px;
+}
+
+.rectValueItem{
+  display: flex;
+ flex-direction: row; 
+  width:25%; height: 44px;
+  align-items: center;
+
+}
+
+.listItemText{
+  font-size: 14px; width:48px; align-content: left; text-align: left;
+  border-style: solid ;
+  border-width: 1px;
+  border-color: #E5E5E5;
+  padding-left:6px;
+  padding-right:6px;
+  padding-top:4px;
+  padding-bottom:4px;
+}
+.listItemTitle{
+  font-size: 14px; width:40px; align-content: left; text-align: right;padding-right: 6px;
+}
+
+.rectValueItem{
+  display: flex;
+ flex-direction: row; 
+  width:25%; height: 44px;
+  align-items: center;
+
+}
+.cirValueItem{
+  display: flex;
+ flex-direction: row; 
+  width:25%; height: 44px;
+  align-items: center
+}
+
